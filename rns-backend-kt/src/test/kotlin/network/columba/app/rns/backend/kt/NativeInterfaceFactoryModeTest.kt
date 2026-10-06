@@ -21,6 +21,7 @@ class NativeInterfaceFactoryModeTest {
             "access_point" to InterfaceMode.ACCESS_POINT,
             "roaming" to InterfaceMode.ROAMING,
             "boundary" to InterfaceMode.BOUNDARY,
+            "point_to_point" to InterfaceMode.POINT_TO_POINT,
             "internal" to InterfaceMode.POINT_TO_POINT // fallback
         )
 

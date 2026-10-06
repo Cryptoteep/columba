@@ -9,6 +9,7 @@ internal fun mapInterfaceMode(modeString: String): network.reticulum.common.Inte
         "access_point" -> network.reticulum.common.InterfaceMode.ACCESS_POINT
         "roaming" -> network.reticulum.common.InterfaceMode.ROAMING
         "boundary" -> network.reticulum.common.InterfaceMode.BOUNDARY
+        "point_to_point" -> network.reticulum.common.InterfaceMode.POINT_TO_POINT
         "internal" -> {
             Log.w("InterfaceModeMapper", "INTERNAL mode not yet supported by reticulum-kt, falling back to POINT_TO_POINT")
             network.reticulum.common.InterfaceMode.POINT_TO_POINT // fallback to the stray value or FULL
