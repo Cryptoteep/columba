@@ -372,7 +372,9 @@ internal object NativeInterfaceFactory {
                 AutoInterface(
                     name = config.name,
                     discoveryScope = mapScopeToHex(config.discoveryScope),
-                )
+                ).apply {
+                    modeOverride = mapInterfaceMode(config.mode)
+                }
 
             is InterfaceConfig.TCPClient ->
                 TCPClientInterface(
@@ -383,7 +385,9 @@ internal object NativeInterfaceFactory {
                     keepAlive = false, // Disable for mobile battery
                     ifacNetname = config.networkName,
                     ifacNetkey = config.passphrase,
-                )
+                ).apply {
+                    modeOverride = mapInterfaceMode(config.mode)
+                }
 
             is InterfaceConfig.UDP ->
                 UDPInterface(
@@ -392,7 +396,9 @@ internal object NativeInterfaceFactory {
                     bindPort = config.listenPort,
                     forwardIp = config.forwardIp,
                     forwardPort = config.forwardPort,
-                )
+                ).apply {
+                    modeOverride = mapInterfaceMode(config.mode)
+                }
 
             is InterfaceConfig.TCPServer ->
                 TCPServerInterface(
@@ -402,6 +408,7 @@ internal object NativeInterfaceFactory {
                     ifacNetname = config.networkName,
                     ifacNetkey = config.passphrase,
                 ).apply {
+                    modeOverride = mapInterfaceMode(config.mode)
                     // Register each spawned child interface with Transport BEFORE
                     // start() opens the accept loop, so the first incoming
                     // connection can't race us into a silent-drop: Python RNS

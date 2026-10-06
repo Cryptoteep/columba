@@ -68,7 +68,9 @@ internal object RNodeConnectionHelper {
                     // this in a dedicated child scope the way startBleInterface does.
                     parentScope = scope,
                     displayImageData = if (config.enableFramebuffer) hostBridge.rnodeFramebufferData() else null,
-                )
+                ).apply {
+                    modeOverride = mapInterfaceMode(config.mode)
+                }
             iface.onPacketReceived = { data, fromInterface ->
                 Transport.inbound(
                     data,
