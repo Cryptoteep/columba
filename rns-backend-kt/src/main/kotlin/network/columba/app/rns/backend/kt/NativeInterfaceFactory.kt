@@ -253,7 +253,9 @@ internal object NativeInterfaceFactory {
                         name = config.name,
                         driver = driver,
                         transportIdentity = identityHash,
-                    )
+                    ).apply {
+                        modeOverride = mapInterfaceMode(config.mode)
+                    }
                 iface.onPacketReceived = { data, fromInterface ->
                     Transport.inbound(
                         data,
